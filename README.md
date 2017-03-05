@@ -13,11 +13,11 @@
 * 点击文章详情，会通过`_id`在MongoDB数据库中查找
 
 ##Whoosh
-官方是这样说的
->>Whoosh是一个快速、功能强大的全文索引和搜索库，纯Python实现。程序员可以使用它来轻松地向应用程序和网站添加搜索功能。
+官方是这样说的：
+>Whoosh是一个快速、功能强大的全文索引和搜索库，纯Python实现。程序员可以使用它来轻松地向应用程序和网站添加搜索功能。
 Whoosh工作的每一部分都可以扩展或替换，以满足您的需求。
 
-在开始使用whoosh之前，你需要一个index对象，在你第一次创建index对象时你必须定义一个Schema对象，Schema对象列出了Index的所有域。
+    在开始使用whoosh之前，你需要一个index对象，在你第一次创建index对象时你必须定义一个Schema对象，Schema对象列出了Index的所有域。
 一个域就是Index对象里面每个document的一个信息，比如他的题目或者他的内容。一个域能够被索引（就是能被搜索到）或者被存储
 （就是得到索引之后的结果，这对于标题之类的索引非常有用）
 ```python
@@ -46,9 +46,9 @@ with ix.searcher() as searcher:
     query = QueryParser("content", ix.schema).parse("first")
     results = searcher.search(query)
     print(results[0])
-    #{"title": u"First document", "path": u"/a"}
+    # {"title": u"First document", "path": u"/a"}
 ```
-##jieba结合Whoosh使用
+##jieba+Whoosh
 ```python
 from jieba.analyse import ChineseAnalyzer
 analyzer = ChineseAnalyzer()
@@ -63,11 +63,8 @@ writer.commit()
 
 官方文档：http://whoosh.readthedocs.io/en/latest/
 
-参考：
-* https://github.com/qiwsir/algorithm/blob/master/index_search_whoosh.md
 * http://blog.sina.com.cn/s/blog_819588bc0101co4b.html
 * http://www.cnblogs.com/chang/archive/2013/01/10/2855321.html
-* http://ashin.sinaapp.com/article/118/
 
 
 
